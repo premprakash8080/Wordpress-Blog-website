@@ -12,7 +12,7 @@
  * Plugin Name:       Phlox Core Elements
  * Plugin URI:        https://wordpress.org/plugins/auxin-elements/
  * Description:       Exclusive and comprehensive plugin that extends the functionality of Phlox theme by adding new Elements, widgets and options.
- * Version:           2.11.0
+ * Version:           2.11.1
  * Author:            averta
  * Author URI:        http://averta.net
  * Text Domain:       auxin-elements
@@ -39,7 +39,7 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 // Don't check the requirements if it's frontend or AUXIN_DUBUG set to false
 if( is_admin() ||
     false === get_transient( 'auxels_plugin_requirements_check' ) ||
-    ! file_exists( get_template_directory() . '/auxin-content/init/dependency.php' )
+    ! file_exists( get_template_directory() . '/auxin-content/init/dependency.php' ) || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))
 ){
 
     if( ! class_exists('Auxin_Plugin_Requirements') ){
@@ -84,6 +84,7 @@ if( is_admin() ||
 
     // If the requirements were not met, dont initialize the plugin
     if( true !== $validation ){
+        delete_transient( 'auxels_plugin_requirements_check' );
         return;
     // cache the validation result and skip the extra checks on frontend for cache period.
     } else {

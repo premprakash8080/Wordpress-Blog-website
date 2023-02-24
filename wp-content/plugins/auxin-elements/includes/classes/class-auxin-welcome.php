@@ -1514,18 +1514,14 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                 'next'   => '3'
             ),
             '8' => array(
-                'method' => 'get_user_email_step',
+                'method' => 'verify_envato_elements_step',
                 'next'   => '9'
             ),
             '9' => array(
-                'method' => 'verify_envato_elements_step',
-                'next'   => '10'
-            ),
-            '10' => array(
                 'method' => 'envato_elements_success_step',
                 'next'   => '3'
             ),
-            '11' => array(
+            '10' => array(
                 'method' => 'uninstall_demo_through_wizard',
                 'next'   => '2'
             )
@@ -1587,7 +1583,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
 		$has_plugin_required = ! empty( $plugins_list ) && ! empty( $plugins['all'] );
 
         if( $has_plugin_required ) :
-            $next_step = Auxels_Envato_Elements::get_instance()->is_envato_element_enabled() ? '4' : $next_step;
+            $next_step = Auxels_Envato_Elements::get_instance()->is_envato_element_enabled() ? '3' : $next_step;
 			ob_start();
 		?>
 				<div class="aux-setup-demo-content aux-content-col aux-install-plugins">
@@ -1680,7 +1676,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
             <div class="aux-return-back">
                 <a  href="#"
                     class="aux-button aux-next-step aux-red aux-medium"
-                    data-next-step="11"
+                    data-next-step="10"
                     data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>"
                     data-demo-plugins="<?php echo htmlspecialchars( wp_json_encode( $args['plugins'] ), ENT_QUOTES, 'UTF-8' ); ?>"
                     data-demo-id="<?php echo esc_attr( $demo_id ); ?>"
@@ -1888,48 +1884,12 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                 <a href="http://avt.li/elements" class="aux-button aux-primary aux-medium aux-explore-envato" target="_blank">
                     <?php esc_html_e( 'Explore and Subscribe', 'auxin-elements' ); ?>
                 </a>
-                <?php
-                $activate_step = '8';
-                if ( ! empty( get_option( 'phlox_envato_elements_license_code', '' ) ) ) {
-                    $activate_step = '9';
-                }
-                ?>
-                <p><?php esc_html_e( 'Already an Envato Elements member?', 'auxin-elements' ); ?> <a href="#" class="aux-next-step" data-next-step="<?php echo esc_attr( $activate_step ); ?>" data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>" data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>"><?php esc_html_e( 'Activate here', 'auxin-elements' );?></a> </p>
+                <p><?php esc_html_e( 'Already an Envato Elements member?', 'auxin-elements' ); ?> <a href="#" class="aux-next-step" data-next-step="8" data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>" data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>"><?php esc_html_e( 'Activate here', 'auxin-elements' );?></a> </p>
             </div>
             <div class="aux-setup-demo-actions">
                 <div class="aux-return-back">
                     <a href="#" data-next-step="<?php echo esc_attr( $next_step ); ?>" class="aux-button aux-next-step aux-outline aux-round aux-transparent aux-medium" data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>" data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>">
                     	<?php esc_html_e( 'Skip', 'auxin-elements' ); ?>
-               		</a>
-                </div>
-            </div>
-        <?php
-        return ob_get_clean();
-    }
-
-    public function get_user_email_step( array $args, $next_step) {
-        ob_start();
-        ?>
-            <div class="aux-setup-demo-content aux-content-col aux-step-envato-elements aux-step-verify-envato-elements">
-                <img src="<?php echo esc_url( AUXELS_ADMIN_URL . '/assets/images/welcome/activation.svg' ); ?>" />
-                <h2 class="aux-step-import-title"><?php esc_html_e( 'Verify Your Envato Elements Subscription', 'auxin-elements' ); ?></h2>
-                <p class="aux-step-description"><?php esc_html_e( "Enter your email below and click continue button", 'auxin-elements' ); ?></p>
-                <div class="token-wrapper">
-                    <input type="text" class="email-field" placeholder="<?php esc_attr_e( 'Enter your email', 'auxin-elements' ); ?>">
-                    <p class="result"></p>
-                </div>
-            </div>
-            <div class="aux-setup-demo-actions">
-                <div class="aux-return-back">
-                <a 	href="#"
-						class="aux-button aux-medium aux-primary aux-verify-elements-email"
-                        data-callback="get_license_code"
-                        data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>"
-						data-next-step="<?php echo esc_attr( $next_step ); ?>"
-						data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>"
-					><?php esc_html_e( 'Continue', 'auxin-elements' ); ?></a>
-                    <a href="#" class="aux-button aux-outline aux-round aux-transparent aux-medium aux-pp-close">
-                    	<?php esc_html_e( 'Cancel', 'auxin-elements' ); ?>
                		</a>
                 </div>
             </div>
@@ -1950,12 +1910,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                 </div>
                 <div class="aux-info-links">
                     <?php
-                        $token_link = '#';
-                        $extension_id = get_option( 'phlox_envato_elements_license_code', '' );
-                        if ( ! empty( $extension_id ) ) {
-                            $extension_description = get_bloginfo( 'name' ) . ' (' . get_home_url() . ')';
-                            $token_link = 'https://api.extensions.envato.com/extensions/begin_activation?extension_id=' . $extension_id . '&extension_type=envato-wordpress&extension_description=' . $this->encode_url_parameter( $extension_description ) . '&utm_content=settings&irgwc=1&clickid=1bPRxZzJ-xyOR7DwUx0Mo3EUUkiwuR1BCVsiXk0&iradid=298927&utm_campaign=elements_af_1264782&iradtype=ONLINE_TRACKING_LINK&irmptype=mediapartner&utm_medium=affiliate&utm_source=impact_radius&mp=averta';
-                        }
+                    $token_link = Auxels_Envato_Elements::get_instance()->get_token_url();
                     ?>
                     <a href="<?php echo esc_url( $token_link ); ?>" target="_blank" class="aux-generate-token" ><?php esc_html_e( 'How to generate a token ?', 'auxin-elements' );?></a>
                     <a href="http://avt.li/elements" target="_blank" class="aux-subscription" ><?php esc_html_e( 'Don\'t have subscription?', 'auxin-elements' );?></a>
@@ -2003,11 +1958,4 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
         <?php
         return ob_get_clean();
     }
-
-    private function encode_url_parameter( $parameter ) {
-		$parameter = html_entity_decode( $parameter, ENT_QUOTES | ENT_XML1, 'UTF-8' );
-		$parameter = str_replace( '#', '', $parameter );
-
-		return urlencode( $parameter );
-	}
 }

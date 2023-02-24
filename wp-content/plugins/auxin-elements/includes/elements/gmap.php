@@ -149,7 +149,7 @@ function auxin_get_gmap_master_array( $master_array ) {
                 'weight'            => '',
                 'group'             => '' ,
                 'edit_field_class'  => ''
-            ),            
+            ),
             array(
                 'heading'           => __('Navigation control','auxin-elements' ),
                 'description'       => __('Show navigation control on map.','auxin-elements' ),
@@ -250,20 +250,22 @@ function auxin_widget_gmaps_callback( $atts, $shortcode_content = null ){
     extract( $result['parsed_atts'] );
 
     ob_start();
-    
+
     // widget header ------------------------------
     echo wp_kses_post( $result['widget_header'] );
     echo wp_kses_post( $result['widget_title'] );
 
     $mapid = uniqid("aux-map");
 
-    if ( empty( $style ) ) {
+    if( is_array( $style ) ){
+        $style = wp_json_encode( $style );
+    } elseif ( empty( $style ) ) {
         $style = auxin_get_gmap_style();
     } elseif ( base64_decode( $style, true ) === false) {
     } else {
         $style = rawurldecode( base64_decode( strip_tags( $style ) ) );
     }
-    
+
     $zoom_wheel = auxin_is_true( $zoom_wheel ) ? 'true' : 'false';
 
 ?>
@@ -311,7 +313,7 @@ function auxin_widget_gmaps_callback( $atts, $shortcode_content = null ){
                     <?php if ( ! empty( $attach_id ) ) { ?>
                         icon: "<?php echo esc_attr( auxin_get_attachment_url( $attach_id, 'full' ) ); ?>"
                     <?php } ?>
-                    
+
                 });
            });
 

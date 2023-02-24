@@ -207,7 +207,8 @@ function auxin_ajax_filter_get_content() {
         $post->meta = wc_get_product_category_list( $product->get_id(), ', ', '<em class="auxshp-meta-terms">', '</em>' );
         $post->badge = $product->is_on_sale() ? true : false;
 
-        if( auxin_get_option( 'product_index_ajax_add_to_cart', '0' ) ) {
+        $isAjaxEnabled  = class_exists( 'AUXSHP' ) ? auxin_is_true( auxin_get_option( 'product_index_ajax_add_to_cart', '1' ) ) : auxin_is_true( get_option( 'woocommerce_enable_ajax_add_to_cart' ) );
+        if(  $isAjaxEnabled ) {
             $class = 'button aux-ajax-add-to-cart add_to_cart_button';
         }
 

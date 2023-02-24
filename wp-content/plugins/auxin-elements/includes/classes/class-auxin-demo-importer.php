@@ -409,7 +409,7 @@ class Auxin_Demo_Importer {
                     'headers' => array(
                         'Authorization'                     => $get_token,
                         'Envato-Extensions-Token'           => get_option( 'phlox_envato_elements_token', '' ),
-                        'Envato-Extensions-Extension-Id'    => get_option( 'phlox_envato_elements_license_code', '' ),
+                        'Envato-Extensions-Extension-Id'    => md5( get_site_url() ),
                     ),
                     'timeout' => 25
                 )
@@ -2095,7 +2095,7 @@ class Auxin_Demo_Importer {
 
         // Change structure of urls included in custom css
         $site_url = str_replace( '/', '\/', trailingslashit( get_site_url() ) );
-        preg_match_all( '/"custom_css":".+?(?<!\\ )"/', $meta, $custom_css, PREG_SET_ORDER );
+        preg_match_all( '/"custom_css":".+?(?<!\\\\)\s?"/', $meta, $custom_css, PREG_SET_ORDER );
         if ( ! empty( $custom_css ) ) {
             foreach ( $custom_css as $key => $css ) {
                 preg_match_all( '#[\w\\\/\-\.\:]+?([\w\-]+?)\\\/wp-content#', $css[0], $matches, PREG_SET_ORDER );

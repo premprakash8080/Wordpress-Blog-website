@@ -2920,9 +2920,10 @@ add_filter( 'woocommerce_product_get_rating_html', 'auxin_get_star_rating_html',
 /*-----------------------------------------------------------------------------------*/
 function auxels_enable_woocommerce_ajax_add_to_cart( $args ){
     global $product;
+    $isAjaxEnabled  = class_exists( 'AUXSHP' ) ? auxin_is_true( auxin_get_option( 'product_index_ajax_add_to_cart', '1' ) ) : auxin_is_true( get_option( 'woocommerce_enable_ajax_add_to_cart' ) );
     $args['class'] = implode( ' ', array_filter( array(
         'button',
-        'aux-ajax-add-to-cart',
+        $isAjaxEnabled ? 'aux-ajax-add-to-cart' : '',
         'product_type_' . $product->get_type(),
         $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : ''
     ) ) );
