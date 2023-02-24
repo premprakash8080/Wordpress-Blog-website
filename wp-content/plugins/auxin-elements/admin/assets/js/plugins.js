@@ -1,4 +1,4 @@
-/*! Phlox Core Plugin - v2.11.0 (2023-01)
+/*! Phlox Core Plugin - v2.11.1 (2023-02)
  *  All required javascript plugins for admin 
  *  http://phlox.pro/
  *  Place any jQuery/helper plugins in here, instead of separate, slower script files!
@@ -1590,13 +1590,6 @@ if( typeof Object.create !== 'function' ){ Object.create = function (obj){ funct
                 this._refresh.bind(this)
             );
 
-            // Check envato elements email - get license code
-            $(document).on(
-                "click",
-                ".aux-verify-elements-email",
-                this._verifyEnvatoElementsEmail.bind(this)
-            );
-
             // Check envato elements token
             $(document).on(
                 "click",
@@ -2626,39 +2619,6 @@ if( typeof Object.create !== 'function' ){ Object.create = function (obj){ funct
                     .next(".aux-more-items")
                     .toggleClass("aux-display");
             });
-        },
-
-        /**
-         * Get envato elements license code
-         */
-        _verifyEnvatoElementsEmail: function(e) {
-
-            // Check currentTarget existence
-            if (!e.currentTarget) {
-                return;
-            }
-
-            var email = $('.email-field').val();
-            var self = this;
-            var $modalSectionElement = this.$modalElement.find(
-                ".aux-steps-col"
-            );
-            this._buttonTarget = e.currentTarget
-            this._ajaxData = {
-                action: 'aux_verify_envato_elements_email',
-                email: email,
-            };
-            $modalSectionElement.addClass("aux-step-in-progress");
-            this._globalAJAX(
-                function(response) {
-                    if (response.status) {
-                        self._stepManager({ currentTarget: self._buttonTarget });
-                    } else {
-                        $modalSectionElement.removeClass("aux-step-in-progress");
-                        $('.token-wrapper .result').addClass('error').text(response.message);
-                    }
-                }
-            );
         },
 
         /**
