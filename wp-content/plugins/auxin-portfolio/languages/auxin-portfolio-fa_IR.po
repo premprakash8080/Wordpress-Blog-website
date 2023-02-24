@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Phlox Portfolio\n"
 "Report-Msgid-Bugs-To: http://averta.net/phlox/wordpress-theme/\n"
-"POT-Creation-Date: 2023-01-21 08:37:53+00:00\n"
+"POT-Creation-Date: 2023-02-23 06:14:33+00:00\n"
 "PO-Revision-Date: 2017-12-20 13:38+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -524,48 +524,48 @@ msgstr ""
 msgid "Note for admin"
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:223
+#: includes/classes/class-auxin-plugin-requirements.php:229
 msgid ""
 "%s plugin is required in order to use this plugin. Please install and "
 "activate the plugin."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:224
-#: includes/classes/class-auxin-plugin-requirements.php:330
-#: includes/classes/class-auxin-plugin-requirements.php:355
+#: includes/classes/class-auxin-plugin-requirements.php:230
+#: includes/classes/class-auxin-plugin-requirements.php:336
+#: includes/classes/class-auxin-plugin-requirements.php:361
 msgid "How to upgrade"
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:244
+#: includes/classes/class-auxin-plugin-requirements.php:250
 msgid ""
 "The plugin requires %s plugin version %s or higher (current version is %s). "
 "Please update it to the latest version."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:329
+#: includes/classes/class-auxin-plugin-requirements.php:335
 msgid ""
 "%s theme requires %s plugin version %s or higher in order to function "
 "property. Your current plugin version is %s, please update it to latest "
 "version."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:354
+#: includes/classes/class-auxin-plugin-requirements.php:360
 msgid ""
 "The plugin requires %s theme version %s or higher in order to function "
 "property. Your current theme version is %s, please %s update to latest "
 "version %s."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:366
+#: includes/classes/class-auxin-plugin-requirements.php:372
 msgid "%s path while checking the availability of theme not found."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:371
+#: includes/classes/class-auxin-plugin-requirements.php:377
 msgid ""
 "%s function callback while checking the availability of theme not found."
 msgstr ""
 
-#: includes/classes/class-auxin-plugin-requirements.php:408
+#: includes/classes/class-auxin-plugin-requirements.php:414
 msgid ""
 "PHP version %s or above is required for this plugin while your the current "
 "PHP version is %s."

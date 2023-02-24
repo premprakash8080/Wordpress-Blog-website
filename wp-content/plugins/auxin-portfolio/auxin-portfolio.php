@@ -12,7 +12,7 @@
  * Plugin Name:       Phlox Portfolio
  * Plugin URI:        http://phlox.pro/
  * Description:       Showcase your projects beautifully in Phlox theme
- * Version:           2.3.0
+ * Version:           2.3.1
  * Author:            averta
  * Author URI:        http://averta.net
  * License:           GPL2
@@ -94,6 +94,7 @@ if( is_admin() ||
 
     // If the requirements were not met, dont initialize the plugin
     if( true !== $validation ){
+        delete_transient( 'auxpfo_plugin_requirements_check' );
         return;
     // cache the validation result and skip the extra checks on frontend for cache period
     } else {
