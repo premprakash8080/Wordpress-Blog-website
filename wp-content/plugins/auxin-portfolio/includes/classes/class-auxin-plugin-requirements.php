@@ -200,6 +200,12 @@ if( ! class_exists( 'Auxin_Plugin_Requirements' ) ){
          */
         function check_plugins_requirement(){
 
+            // check if oxygen builder is active then bypass loading auxin portfolio
+            if( $this->is_plugin_active( 'oxygen/functions.php' ) ){
+                $this->requirements_passed = false;
+                return;
+            }
+            
             if( empty( $this->requirements['plugins'] ) ){
                 return;
             }
