@@ -59,7 +59,7 @@ function auxin_theme_register_recommended_plugins() {
             'name'       => __('Depicter', 'phlox'),
             'slug'       => 'depicter',
             'required'   => false,
-            'categories' => array('auxin', 'essential', 'bundled')
+            'categories' => array('auxin', 'recommended', 'essential', 'bundled')
         ),
 
 
@@ -79,38 +79,45 @@ function auxin_theme_register_recommended_plugins() {
         ),
 
         array(
+            'name'       => __('WP SMS', 'phlox'),
+            'slug'       => 'wp-sms',
+            'required'   => false,
+            'categories' => array('recommended', 'social')
+        ),
+
+        array(
             'name'       => __('Instagram Feed', 'phlox'),
             'slug'       => 'instagram-feed',
             'required'   => false,
-            'categories' => array('recommended', 'social')
+            'categories' => array('social')
         ),
 
         array(
             'name'       => __('WordPress SEO', 'phlox'),
             'slug'       => 'wordpress-seo',
             'required'   => false,
-            'categories' => array('recommended', 'optimization')
+            'categories' => array('optimization')
         ),
 
         array(
             'name'       => __('Recent Tweets Widget', 'phlox'),
             'slug'       => 'recent-tweets-widget',
             'required'   => false,
-            'categories' => array('recommended', 'social')
+            'categories' => array('social')
         ),
 
         array(
             'name'       => __('Contact Form 7', 'phlox'),
             'slug'       => 'contact-form-7',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Variation Swatches for WooCommerce', 'phlox'),
             'slug'       => 'variation-swatches-for-woocommerce',
             'required'   => false,
-            'categories' => array('recommended', 'e-commerce')
+            'categories' => array('e-commerce')
         ),
 
         array(
@@ -118,28 +125,28 @@ function auxin_theme_register_recommended_plugins() {
             'slug'       => 'wordpress-importer',
             'required'   => false,
             'thumbnail'  => 'default',
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Related Posts for WordPress', 'phlox'),
             'slug'       => 'related-posts-for-wp',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('WP ULike', 'phlox'),
             'slug'       => 'wp-ulike',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Autoptimize', 'phlox'),
             'slug'       => 'autoptimize',
             'required'   => false,
-            'categories' => array('recommended', 'optimization')
+            'categories' => array('optimization')
         ),
 
         array(
@@ -147,7 +154,7 @@ function auxin_theme_register_recommended_plugins() {
             'slug'       => 'custom-facebook-feed',
             'required'   => false,
             'thumbnail'  => 'default',
-            'categories' => array('recommended', 'social')
+            'categories' => array('social')
         ),
 
         array(
@@ -155,7 +162,7 @@ function auxin_theme_register_recommended_plugins() {
             'slug'       => 'flickr-justified-gallery',
             'required'   => false,
             'thumbnail'  => 'default',
-            'categories' => array('recommended', 'social')
+            'categories' => array('social')
         ),
 
         array(
@@ -163,7 +170,7 @@ function auxin_theme_register_recommended_plugins() {
             'slug'       => 'wp-smushit',
             'required'   => false,
             'thumbnail'  => 'default',
-            'categories' => array('recommended', 'optimization')
+            'categories' => array('optimization')
         ),
 
         array(
@@ -171,56 +178,56 @@ function auxin_theme_register_recommended_plugins() {
             'slug'       => 'customizer-export-import',
             'required'   => false,
             'thumbnail'  => 'default',
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Popular Posts', 'phlox'),
             'slug'       => 'wordpress-popular-posts',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Visual CSS Style Editor', 'phlox'),
             'slug'       => 'yellow-pencil-visual-theme-customizer',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('EU Cookie Notce', 'phlox'),
             'slug'       => 'cookie-notice',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('MailChimp for WordPress', 'phlox'),
             'slug'       => 'mailchimp-for-wp',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Real-time Bitcoin Converter', 'phlox'),
             'slug'       => 'real-time-bitcoin-currency-converter',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Custom Sidebars', 'phlox'),
             'slug'       => 'custom-sidebars',
             'required'   => false,
-            'categories' => array('recommended')
+            'categories' => array()
         ),
 
         array(
             'name'       => __('Simple Taxonomy Ordering', 'phlox'),
             'slug'       => 'simple-taxonomy-ordering',
             'required'   => false,
-            'categories' => array('recommended'),
+            'categories' => array(),
             'wp-image-name' => 'icon-128x128.jpg'
         )
     );
@@ -270,9 +277,9 @@ function auxin_define_plugins_categories_localized( $plugin_categories ){
     $extra = array(
         //'auxin'          => __( 'Exclusive', 'phlox' ),
         //'pagebuilder'    => __( 'Page Builder', 'phlox' ),
+        'recommended'    => __( 'Recommended', 'phlox' ),
         'essential'      => __( 'Essentials', 'phlox' ),
         'bundled'        => __( 'Bundled', 'phlox' ),
-        'recommended'    => __( 'Recommended', 'phlox' ),
         'visual-builder' => __( 'Visual Builder', 'phlox' ),
         'e-commerce'     => __( 'E-Commerce', 'phlox' ),
         'blog'           => __( 'Blog', 'phlox' ),

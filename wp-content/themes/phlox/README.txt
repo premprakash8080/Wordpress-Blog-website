@@ -3,8 +3,8 @@ Contributors: averta, averta_support
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, custom-menu, custom-colors, editor-style, featured-images, featured-image-header, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, translation-ready, blog, e-commerce, portfolio, threaded-comments, translation-ready
 Requires PHP: 5.4
 Requires at least: 4.6
-Tested up to: 6.0.1
-Stable tag: 2.11.0
+Tested up to: 6.1.1
+Stable tag: 2.11.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,9 @@ Phlox bundles the following third-party resources:
 
 
 == Changelog ==
+
+= 2.11.1 =
+- [Fix]: Minor bugs fixed.
 
 = 2.11.0 =
 - [New]: A new option added to keep the aspect ratio of featured image in single post page
@@ -1094,6 +1097,4 @@ Phlox bundles the following third-party resources:
 
 
 == Notes ==
-- [New]: Introducing more reliable and consistent automatic updater tool.
-- [New]: New typography options added.
-- [New]: New loading preview options for responsive attachment added.
+- [Fix]: Minor bugs fixed.
