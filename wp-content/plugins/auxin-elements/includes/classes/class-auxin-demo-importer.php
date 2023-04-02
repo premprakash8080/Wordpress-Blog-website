@@ -1445,6 +1445,8 @@ class Auxin_Demo_Importer {
 
         do_action( 'auxin_demo_import_finish' );
 
+        flush_rewrite_rules();
+        
         // Send final success message
         wp_send_json_success( array( 'step' => 'prepare_site', 'next' => 'final', 'message' => __( 'All steps are successful', 'auxin-elements' ) ) );
     }
